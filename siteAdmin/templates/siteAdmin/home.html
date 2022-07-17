@@ -1,0 +1,76 @@
+{% extends 'siteAdmin/base_admin.html' %}
+{% load static %}
+{% block content %}
+<title>M-Fashion | Admin - Welcome</title>
+
+
+<div class="admin-main-wrapper">
+	<div>
+		<h2>Orders</h2>
+		<div class="admin-main">
+			<a href="{% url 'admin_orders' %}">
+				<div>
+					<h3>Pending Orders</h3>
+					<p>{{ total_pending_orders }}</p>
+				</div>
+			</a>
+			
+			<a href="{% url 'admin_orders' %}">
+				<div>
+					<h3>Completed Orders</h3>
+					<p>{{total_completed_orders}}</p>
+				</div>
+			</a>
+			<a href="{% url 'admin_orders' %}">
+				<div>
+					<h3>Total Orders</h3>
+					<p>{{ total_orders}}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+	<hr>
+	<div >
+		<h2>Products and Products Categories</h2>
+		<div class="admin-main">
+			<a href="{% url 'admin_products' %}">
+				<div>
+					<h3>Total Products</h3>
+					<p>{{ total_products }}</p>
+				</div>
+			</a>
+			<a href="{% url 'create_product' %}">
+				<div>
+					<h3>+ Add</h3>
+					<p>Products </p>
+				</div>
+			</a>	
+			<a href="{% url 'admin_products_category' %}">
+				<div>
+					<h3>Total Products Category</h3>
+					<p>{{ total_products_category }}</p>
+				</div>
+			</a>
+			<a href="{% url 'create_product_category' %}">
+				<div>
+					<h3>+ Add</h3>
+					<p>Products Category</p>
+				</div>
+			</a>	
+			
+		</div>
+	</div>
+	<hr>
+	<div>
+		<h2>Customers</h2>
+		<div class="admin-main">
+			<a href="{% url 'admin_customers' %}">
+				<div>
+					<h3>All Customers</h3>
+					<p>{{ total_customers }}</p>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

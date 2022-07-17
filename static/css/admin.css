@@ -1,0 +1,379 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: whitesmoke;
+}
+a{
+    text-decoration: none;
+    color:#b2b2bf;
+}
+a:hover{
+	color: teal;
+}
+.success_btn{
+	border: 1px solid teal;
+	color: white;
+	font-family: 'segoe ui';
+	padding: 10px;
+	font-weight: bold;
+	background-color: teal;
+}
+.success_btn:hover{
+	background-color: #37b3b3;
+	border: 1px solid #37b3b3;
+}
+.delete_btn{
+	border: 1px solid crimson;
+	color: crimson;
+	font-family: 'segoe ui';
+	padding: 8px;
+	font-weight: bold;
+	background-color: whitesmoke;
+}
+.delete_btn:hover{
+	background-color: crimson;
+	color: white;
+}
+
+.main-{
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-column-gap: 2vh;
+}
+
+.admin-nav{
+
+	background-color: #021318;
+	color:#b2b2bf;
+	height: 100vh;
+	font-family: 'segoe UI';
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+}
+@media (max-width : 780px){
+    .admin-nav{
+    	display: none;
+    }
+}
+.admin-responsive{
+	display: block;
+	/*grid-column: 1/2;*/
+	overflow-x: hidden;
+}
+.admin-nav div{
+	width: 100%;
+	padding: 10px;
+	/*box-shadow: 0 2px 4px white;*/
+}
+.admin-nav h1 a{
+	text-align: center;
+	letter-spacing: 3px;
+	color: teal;
+	padding: 10px;
+	box-shadow: 0 2px 4px teal;
+	font-family: georgia;
+	font-style: italic;
+}
+
+.admin-nav h3{
+	background-color: teal;
+	padding: 10px;
+	margin: 0;
+	color: white;
+}
+.carousel-action{
+    position: absolute;
+    width: 99%;
+    top: 50%;
+    display: none;
+}
+.carousel-action button{
+    border-radius: 50px;
+    background-color: teal;
+    border: 0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+@media (max-width : 780px){
+    .carousel-action{
+    	display: block;
+    }
+}
+.personal-info ul {
+    list-style-type: none;
+    padding: 0;
+    padding:0 ;
+    margin: 0;
+}
+.personal-info li {
+    font-family: 'segoe UI';
+    font-weight: normal;
+    border-bottom: 1px solid grey;
+	padding: 10px 15px;
+
+}
+.personal-info ul span {
+    font-weight: bold;
+}
+.our-stuff ul ,.admin-main-details ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+.our-stuff li,.admin-main-details li {
+	border-bottom: 1px solid grey;
+	padding: 10px 15px;
+}
+.admin-main-details {
+	width: 90%;
+	margin:0 auto;
+	font-family: "segoe ui";
+}
+
+.admin-main-details h1{
+	font-family: 'Segoe UI';
+	color: saddlebrown;
+	
+}
+.admin-main-details .create_btn{
+	color: darkgreen;
+	font-weight: 700;
+	font-size: 18px;
+}
+.admin-main-details .create_btn:hover{
+	color: saddlebrown;
+}
+.admin-main-details li{
+	border-bottom: 1px solid lightgrey;
+	font-weight: 600;
+	color: darkblue;
+	display: flex;
+	justify-content:space-between;
+}
+.admin-main-details li a{
+	color: darkblue;
+}
+.admin-main-details li a:hover {
+	color: saddlebrown;
+}
+.admin-main-details form p label{
+	width: 100%;
+	display: block;
+	font-weight: 600;
+}
+.admin-main-details .profile_wrapper li{
+	display: block;
+}
+.admin-main-details form p input{
+	width: 270px;
+	height: 24px;
+	margin-top: 10px;
+	border: none;
+	background: transparent;
+	border-bottom: 1.5px solid darkblue;
+	font-family: 'segoe ui';
+	color: darkblue;
+	font-weight: 500;
+	font-size: 14px;
+	
+}
+.admin-main-details form p input:focus{
+	outline: grey;
+	border-bottom: 2px solid darkblue;
+}
+.admin-main-details form  button{
+	font-size: 18px;
+	padding: 8px 30px;
+	border: 1px solid saddlebrown;
+	border-radius: 3px;
+	color: saddlebrown;
+}
+.admin-main-details form  button:hover{
+	border: 1px solid saddlebrown;
+	background-color: saddlebrown;
+	color: white;
+
+}
+.our-stuff li:nth-child(even), .personal-info li:nth-child(even) {
+	background-color: #032028;
+}
+.admin-main-details li:nth-child(even){
+	background-color: ghostwhite;
+}
+@media (max-width : 780px){
+    .admin-main-details{
+    	grid-column: 1/3;
+    }
+    .admin-main-details li{
+    	display: block;
+    }
+}
+.admin-main-wrapper h2{
+	color: darkblue;
+	font-family: 'segoe ui';
+	/*font-size: px;*/
+}
+
+@media (max-width : 780px){
+	.admin-main-wrapper{
+		grid-column: 1/3;
+	}
+	.admin-main-wrapper h2{
+		margin-left: 20px;
+	}
+}
+.pull{
+	display:flex;
+	flex-direction: column;
+}
+.admin-main{
+	width: 90%;
+	margin: auto;
+	display: grid;
+	grid-template-columns:repeat(4, 1fr); 
+	justify-content: center;
+	/*align-items: center;*/
+	grid-gap: 2vh;
+}
+@media (max-width : 780px){
+	.admin-main{
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+.admin-main a{
+	background-color: #6dab98;
+	min-height: 120px;
+	box-shadow: 0 2px 4px lightgrey;
+	border-radius: 6px;
+	font-family: 'segoe ui';
+	text-align: center;
+	color: white;
+
+}
+.admin-main a:hover{
+	opacity: 0.7;
+}
+.admin-main p{
+	font-size: 20px;
+	color: saddlebrown;
+	font-weight: 600;
+}
+.admin-main a:nth-child(even){
+	background-color: white;
+	color: teal;
+}
+.admin-main div:nth-child(even) p{
+	color: darkblue;
+}
+hr{
+    border: none;
+    border-bottom: 1.5px solid lightgrey;
+}
+.form-wrapper{
+	width: 80%;
+	margin: auto;
+	border-radius: 7px;
+	padding: 20px;
+	height: 100vh;
+	overflow: auto;
+}
+.form-wrapper h2{
+	color: teal;
+	padding: 0;
+	margin: 0;
+	font-family: 'segoe ui';
+}
+.form-wrapper p{
+	margin: 0;
+	font-weight: 700;
+}
+.form-wrapper form{
+	font-family: 'segoe ui';
+}
+.form-wrapper form input{
+	width: 80%;
+	height: 35px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	padding-left: 10px;
+}
+.form-wrapper form input[type = 'file']{
+	padding-top: 10px;
+	border: none;
+}
+
+.form-wrapper form input[type = 'checkbox']{
+	padding-top: 10px;
+	height: inherit;
+	border: none;
+	width: inherit;
+}
+.form-wrapper form select{
+	width: 80%;
+	height: 40px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	padding-left: 10px;
+	font-size: 17px;
+}
+.form-wrapper form textarea{
+	width: 80%;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	padding-left: 10px;
+}
+.form-wrapper  label{
+	font-weight: 600;
+}
+.form-wrapper form input:focus , 
+.form-wrapper form textarea:focus{
+	outline: teal;
+	border: 1px solid teal;
+	box-shadow: 0 2px 4px teal;
+}
+.form-wrapper form select:focus{
+	outline: teal;
+	border: 1px solid teal;
+	box-shadow: 0 2px 4px teal;
+}
+
+.form-wrapper .helptext{
+	display: none;
+}
+
+.form-wrapper .errorlist{
+	display: block;
+	color: crimson;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+.form-wrapper p{
+	font-family: 'segoe UI';
+}
+.form-wrapper p a{
+	font-weight: 600;
+	color: teal;
+	text-decoration: underline;
+}
+.form-display{
+	display: flex;
+	flex-wrap: wrap;
+}
+.form-display div{
+	flex-basis: 48%;
+	padding-bottom: 20px;
+	font-weight: 600;
+	
+}
+
+
+
+
+

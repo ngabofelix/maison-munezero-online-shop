@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin - Delete</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+</head>
+<body style="background-color: teal !important;">
+	<div style="width: 30%;margin-top: 30vh;background-color: whitesmoke;height:fit-content;" class="form-wrapper">
+		<form method="POST" >
+			{% csrf_token %}
+			<p style="font-weight: 500">Are you sure, you want to delete <strong>" {{ product.product_name }} {{  product.category }} "</strong> </p><br>
+			<div style="text-align: center;">
+				<a style="text-decoration: underline;font-weight: 700; color: teal;" href="{% url 'admin_products' %}">Cancel</a>
+				<button style="width: 40%;" class="delete_btn" type="submit">Delete</button>
+			</div>
+			
+		</form>
+	</div>
+</body>
+</html>

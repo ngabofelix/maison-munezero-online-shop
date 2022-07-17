@@ -1,0 +1,91 @@
+{% extends 'job/base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="admin-main-wrapper">
+	<div>
+		<h2>In this Week</h2>
+		<div class="admin-main">
+			<div>
+				<h3><a style="color:black" href="{% url 'admin_employers' %}">Employers</a></h3>
+				<p>{{ total_employers }}</p>
+			</div>
+			<div>
+				<h3> <a style="color:black" href="{% url 'admin_jobs' %}">Jobs</a></h3>
+				<p>{{total_jobs}}</p>
+			</div>
+	
+			<div>
+				<h3><a style="color:black" href="{% url 'admin_blogs' %}">Blogs</a></h3>
+				<p>{{ total_blogs }}</p>
+			</div>
+	
+			<div>
+				<h3><a style="color:black" href="{% url 'admin_blog_topic' %}">Blog Topics</a></h3>
+				<p>{{ total_blog_topics}}</p>
+			</div>
+			<div>
+				<h3><a style="color:black" href="{%  url 'admin_job_category' %}">Job Category</a></h3>
+				<p>{{total_job_category}}</p>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div >
+		<h2>Add Item</h2>
+		<div class="admin-main">
+			<div>
+				<h3>+ Add</h3>
+				<p><a href="{% url 'register' %}"> New Employer </a></p>
+			</div>
+			<div>
+				<h3>+ Add</h3>
+				<p><a href="{% url 'create-job' %}">New Job</a></p>
+			</div>
+	
+			<div>
+				<h3>+ Add</h3>
+				<p><a href="{% url 'create-blog' %}">New Blog</a></p>
+			</div>
+	
+			<div>
+				<h3>+ Add</h3>
+				<p><a href="{% url 'create-blog-topic' %}">Blog Topics</a></p>
+			</div>
+			<div>
+				<h3>+ Add</h3>
+				<p><a href="{% url 'create-job-category' %}">Job Category</a></p>
+			</div>
+		</div>
+	</div>
+		<hr>
+	<div>
+		<h2>In General</h2>
+		<div class="admin-main">
+			<div>
+				<h3>Total Views</h3>
+				<p>350</p>
+			</div>
+			<div>
+				<h3>Jobs</h3>
+				<p>3000</p>
+			</div>
+	
+			<div>
+				<h3>Blogs</h3>
+				<p>200</p>
+			</div>
+	
+			<div>
+				<h3>Blog Topics</h3>
+				<p>200</p>
+			</div>
+			<div>
+				<h3>Job Category</h3>
+				<p>200</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

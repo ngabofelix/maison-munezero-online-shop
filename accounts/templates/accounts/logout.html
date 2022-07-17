@@ -1,0 +1,18 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block content %}
+<title>Logo</title>
+
+<br>
+<div class="form-wrapper" style="width: 20%;margin-top: 30vh;background-color: white;">
+	<form action="#" method = "POST">
+	{% csrf_token %}
+	<h3> You are logged out now!</h3>
+	<div style="text-align: center;">
+		<a href="{% url 'store' %}" style="text-decoration: underline;font-weight: 700; color:teal;" >Back home</a> &nbsp;
+		<a href="{% url 'login' %}" style="text-decoration: underline;font-weight: 700; color:teal;" >Log in again</a> &nbsp;
+	</div>
+</form>
+</div>
+<br>
+{% endblock %}

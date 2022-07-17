@@ -1,0 +1,88 @@
+{% extends 'siteAdmin/base_admin.html' %}
+{% load static %}
+{% block content %}
+<title>M-Fashion | Admin - 
+	{% if products %}
+		Products
+	{%  endif %}
+	{% if orders %}
+		Orders
+	{%  endif %}
+	{% if customers %}
+		Customers
+	{%  endif %}
+	{% if categories %}
+		Products Categories
+	{% endif %}
+</title>
+
+<div class="admin-main-details">
+	
+	<h1>{{ intro }}</h1>
+	{% if products %}
+	<a class="create_btn" href="{% url 'create_product' %}"> + New Product</a>
+	{% endif %}
+	{% if categories %}
+	<a class="create_btn" href="{% url 'create_product_category' %}"> + New Product Category</a>
+	{% endif %}
+
+<hr>
+	<ul>
+		{% if products.count == 0 %}
+		 <p>No products to show <br> <br><a class="create_btn" href="{% url 'create_product' %}"> + New Product</a></p>
+		{% endif %}
+		{% for product in products %}
+		<li>
+			<div>
+				<a href="{% url 'product-detail' product.id %}">{{ product.product_name }}</a>
+			</div>
+			<br>
+			<div>
+				<a href="{% url 'update_product' product.id %}">Update</a> &nbsp; &nbsp;
+				<a style="color: crimson;" href="{% url 'delete_product' product.id %}">Delete</a>
+			</div>
+		</li>
+		
+		{% endfor %}
+
+		{% for order in orders %}
+		{% if order.get_cart_items > 0 %}
+		<li>
+			<div>
+				<a href="{% url 'order-detail' order.id %}">{{ order.customer }}
+			</div>
+			<div>
+				<a href="#">Update</a> &nbsp; &nbsp;
+				<a style="color: crimson;" href="#">Delete</a>
+			</div>
+
+		</li>
+		{% endif %}
+		{% endfor %}
+
+		{% for customer in customers %}
+		<li>
+			<a href="{% url 'customer-detail' customer.user %}">{{ customer.user.username}}  </a>
+		</li>
+		{% endfor %}
+
+
+		{% if categories.count == 0 %}
+		 <p>No products category to show <br> <br><a class="create_btn" href="{% url 'create_product_category' %}"> + New Product Product</a></p>
+		{% endif %}
+		{% for category in categories %}
+		<li>
+			<div>
+				{{ category.category }}
+			</div>
+			<div>
+				<a href="{% url 'update_product_category' category.id %}">Update</a> &nbsp; &nbsp;
+				<a style="color: crimson;" href="{% url 'delete_product_category' category.id %}">Delete</a>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+
+</div>
+
+{% endblock %}

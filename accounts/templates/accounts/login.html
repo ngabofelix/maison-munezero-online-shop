@@ -1,0 +1,30 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block content %}
+<title>M-fashon | Log in</title>
+
+<section>
+	<div class="form-wrapper" style="width: 40%;margin-top: 20vh ;	background-color: white;">
+		<h2> Welcome, Login In to  continue</h2>
+		<hr>
+		<form action="#" method="POST">
+			{% csrf_token %}
+			{{ form.errors }}
+			{% for field in form %}
+			<div>
+			{{ field.errors}}
+			{{ field.label }}<br>
+			{{ field }}
+
+			</div>
+			<br>
+			{% endfor %}
+			<br>
+			<button style="font-size: 20px;width: 40%; border-radius: 3px;" class="success_btn" type="submit">Log In </button>
+		</form>
+		<p>Are you new? <a href="{% url 'register' %}">Register</a></p>
+	</div>
+</section>
+
+	
+{% endblock content %}

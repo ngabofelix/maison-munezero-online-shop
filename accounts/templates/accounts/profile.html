@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{%  load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<title>{{ request.user }}</title>
+</head>
+<body>
+	<header>
+		<nav>
+		    <div  class="mynav-bar"> 
+		        <div class="site_title">
+		            <h1><a href="{% url 'store' %}">M-Fashion</a></h1>
+		            <a href="#" class="toggle-button">
+		                <span class="bar"></span>
+		                <span class="bar"></span>
+		                <span class="bar"></span>
+		            </a>
+		        </div>
+		        <div class="navbar_links">
+		            <ul class="nav_links">
+		                <li><a  href="#">Store</a></li>
+		                <li><a href="#">Category</a></li>
+		                <li><a href="#">Contact</a></li>
+		                <li><a href="#">About Us</a></li>  
+		            </ul>    
+		        </div>
+		        <div class="navbar_search">
+		            <ul class="nav_special_links">
+		            	{% if user.is_authenticated %}
+		            		<li><a href="{% url 'logout' %}"> {{ user.username }}, Logout</a>	</li>
+		                <li>
+		                	<a href="{% url 'cart' %}"><div class="cart-logo-wrapper">
+		                	 <img src="{% static 'images/cart.jpg' %}">
+		                	</div> 
+		                	<span class="cart-item-nbr">{{cart_items }}</span>
+		                	</a>
+		                </li>
+
+		              {% else %}
+		                <li><a href="{% url 'register' %}">Register</a> </li>
+		                <li><a href="{% url 'login' %}">Login</a> </li>
+		              {% endif %}
+		            </ul>
+		        </div>
+		    </div>
+		  </nav>
+	</header>
+	<main>
+		{% block content %}
+		{% endblock %}
+	</main>
+	 <footer>
+      <div class=" footer-div">
+         <p>M-Fashion &copy; 2022 - Allright Reserved</p>    
+      </div>
+      <div class=" footer-div ">
+        <p><a href="#">Privacy Policy</a> -
+          <a href="#">Terms and Conditions</a> - <a href="#">About Us</a>
+          - <a href="#">Admin</a>
+        </p>   
+          
+      </div>
+          
+    </footer>
+</body>
+</html>
+

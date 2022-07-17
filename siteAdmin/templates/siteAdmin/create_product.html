@@ -1,0 +1,25 @@
+{% extends 'siteAdmin/base_admin.html' %}
+{% load static %}
+{% block content %}
+
+<title>Admin - New Product</title>
+<div class="form-wrapper">
+	<h2> + Create Product</h2>
+	<br>
+	<form action="#" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{% for field in form %}
+		<p>Add {{ field.label }} of your product </p>
+		<hr>
+		<div>
+			{{ field.errors}}
+			{{ field.label }}<span style="color: crimson;"> *</span><br>
+			{{ field }}
+		</div>
+		<br>
+		{% endfor %}
+
+		<button style="font-size: 18px;width: 30%;" type="submit"  class="success_btn">Create Product</button>
+	</form>
+</div>
+{% endblock %}

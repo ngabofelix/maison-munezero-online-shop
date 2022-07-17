@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/admin.css' %}">
+  
+  
+</head>
+<body>
+	<main class="main-">
+	<div class="admin-nav">
+		<h1><a href="{% url 'home' %}">M-Fashion</a></h1>
+		<br>
+		<div class="personal-info">
+	        <h3> Personal Information</h3>
+	    
+	        <ul>
+	        <li>Names :<span> {{ user.username}} </span></li>
+
+	        <li> Contact : <span> {{ user.email }}</span></li>
+	        <li> status: <span>Site Admin</span></li>    
+	        </ul>   
+		</div>
+
+		<div class="our-stuff">
+			<h3>Explore More</h3>
+			
+			<ul>
+				<li><a href="{% url 'admin_customers' %}">Customers</a></li>
+				<li><a href="{%  url 'admin_orders' %}">Orders</a></li>
+				<li><a href="{% url 'admin_products' %}">Products</a></li>
+				<li><a href="{% url 'admin_products_category' %}">Products Category</a></li>
+			</ul>
+		</div>
+		<br> 
+		<a href="{% url 'home' %}">View Site</a><br>
+		<a href="#">Log out</a><br>
+		<a href="#">Change Password</a><br>
+	</div>
+		{% block content %}
+		{% endblock %}
+	</main>
+	<div class="carousel-action ">
+	     <button class="prev_for_job">&#10094</button>
+	     <!-- <button class="next_for_job">&#10095</button> -->
+  </div>
+
+  <script type="text/javascript">
+        const toggleBtn = document.getElementsByClassName('prev_for_job')[0];
+        const navbarLinks = document.getElementsByClassName('admin-nav')[0];
+        const navbarSearch = document.getElementsByClassName('main-')[0]
+
+        toggleBtn.addEventListener('click', ()=>{
+	        navbarLinks.classList.toggle('admin-responsive')
+	        navbarSearch.classList.toggle('pull')
+    	})
+    </script>
+</body>
+</html>

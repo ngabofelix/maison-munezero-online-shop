@@ -1,0 +1,130 @@
+{% extends 'siteAdmin/base_admin.html' %}
+{% load static %}
+{% block content %}
+<title>Admin -  
+	{% if product %}
+		{{ product.product_name }}
+	{%  endif %}
+	{% if order %}
+		{{ order.customer.name }} Order
+	{%  endif %}
+	{% if customer %}
+		{{ customer.user}}
+	{%  endif %}
+</title>
+
+ 	<div class="admin-main-details">
+ 		{% if product %}
+		<a href=" {% url 'admin_products' %} "><button class="blog-detail-btn">&#8592; Back</button></a>
+		<div>
+			<h2 style="text-align: center">{{ product.product_name }} </h2>
+			<small>  &nbsp; &nbsp; &nbsp;&nbsp;  Category: <strong>{{ product.category}}</strong> &nbsp; &nbsp;| &nbsp; Price : <strong>{{ product.price }} RWF</strong>&nbsp; &nbsp;| &nbsp; Views : <strong>{{ blog.views }}</strong> &nbsp; &nbsp;| </small>
+			<hr>
+			<div style="display:flex; flex-wrap: wrap;">
+				<div  style="padding:6px">
+					<img src="{{ product.imageURL }}" width="280px" height="350px">
+				</div>
+				<div style="padding:6px">
+					<img src="{{ product.image2URL }}" width="280px" height="350px">
+				</div>
+				<div style="padding:6px">
+					<img src="{{ product.image3URL }}"width="280px" height="350px">
+				</div>	
+			</div>
+			<p style="text-align: justify;">{{ product.description }}</p>	
+			&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <strong><a href="{% url 'update_product' product.id %}">Update</a></strong>&nbsp; &nbsp;| &nbsp;  <strong><a href="">Delete</a></strong>
+		</div>
+		{% endif %}
+
+		{% if order %}
+		<a href="{% url 'admin_orders' %}"><button class="job-detail-btn">&#8592;Back</button></a>
+		<div >
+			<h2 style="text-align: center">{{ order.customer.name }} Order </h2>
+			<p style="padding-top: 6px;"> <small>   Date ordered: <strong>{{ order.date_ordered }}</strong> &nbsp; &nbsp;| &nbsp; Complete : <strong>{{order.complete}}</strong>
+			 &nbsp; &nbsp;| &nbsp;&nbsp;Transaction Id :<strong> {{ order.transaction_id}}</strong>&nbsp; &nbsp; | &nbsp;Category :<strong> {{ job.job_category }}</strong></small> </p>
+			 <hr>
+			 
+			<ul>
+			 	{% for item in order_item %}
+				<li style="">
+					<div style="margin:auto 0;">
+						<a href="{% url 'product-detail' item.product.id %}">{{ item.product }}</a>
+					</div>
+					<br>
+					<div style="display:flex;">
+						
+						<p style="padding-right:10px ">x{{ item.quantity }}</p>
+						<p style="padding-left:10px ">{{ item.get_total }} RWF</p>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+			
+			<p style="font-weight: 600;">Total Items: <strong>{{ order.get_cart_items }}</strong></p>
+			<p style="font-weight: 600;">Total Amount: <strong>{{ order.get_cart_total }} RWF</strong></p>
+
+			{% if order.complete == True %}
+			<div>
+				<h3>Shipping Info</h3>
+				<ul>
+					<li>Customer Name :{{ shipping_address.customer.name }}</li>
+					<li>Customer Email :{{ shipping_address.customer.email }}</li>
+					<li>Address :{{ shipping_address.address }}</li>
+					<li>Province :{{ shipping_address.province }}</li>
+					<li>District :{{ shipping_address.district }}</li>
+					<li>Sector :{{ shipping_address.sector }}</li>
+					<li>Date added :{{ shipping_address.date_added }}</li>
+				</ul>
+			</div>
+			{% endif %}
+
+			&nbsp; &nbsp; &nbsp;&nbsp; <strong><a style="color: saddlebrown;" href="">Update</a></strong>&nbsp; &nbsp;| &nbsp;  <strong><a style="color: crimson;" href="">Delete</a></strong>
+		</div>
+		{% endif %}
+		{% if customer %}
+		<div class="profile_wrapper">
+			<h1 class="profile_intro">  <span>{{ customer.user}}'s Information</span> </h1>
+            <div  class="personall_info_wrapper">
+               <div class="personal_info">
+                	<h3> Personal Information</h3>
+                    <ul>
+                    	<li>Username:<strong> {{ customer.user}}</strong></li>
+	                    <li>Full Name:<strong> {{ customer.name }}<strong></li>
+	                    <li> Email: <strong>{{ customer.email }}</span></li>   
+                    </ul>
+                </div>
+                <div >
+                <h3>Orders</h3>  
+                <ul>
+                    {% for order in orders %}
+                    {% if order.get_cart_items > 0 %}
+                    <li style="display:flex;justify-content: space-between;">
+                    	<a href="{% url 'order-detail' order.id %}">Order at {{ order.date_ordered }} </a>
+                    	<a href="#">Update</a> 
+                    	<a style="color: crimson;" href="#">Delete</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+	            <div >
+		            <h3>Shipping Addresses</h3>
+		            <div style="display: flex; flex-wrap: wrap;">
+		            {% for shipping_address in shipping_addresses %}
+		            <ul style="padding-right:20px">
+					<li>Address : <strong>{{ shipping_address.address }}</strong></li>
+					<li>Province : <strong>{{ shipping_address.province }}</strong></li>
+					<li>District : <strong>{{ shipping_address.district }}</strong></li>
+					<li>Sector : <strong>{{ shipping_address.sector }}</strong></li>
+					</ul>
+					<br>
+					{% endfor %}
+					</div>
+	        	</div> 
+            </div>
+		{% endif %}
+	</div>
+	<br> <br>			
+ 
+
+{% endblock %}
